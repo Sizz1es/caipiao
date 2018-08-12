@@ -21,6 +21,14 @@
             <artifactId>caipiao-core</artifactId>
         </dependency>
 
+        <!-- Junit Test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- 热部署工具 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
