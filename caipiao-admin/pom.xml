@@ -15,7 +15,32 @@
 
     <dependencies>
 
+        <!-- 引入本项目核心依赖 -->
+        <dependency>
+            <groupId>com.oneinstep</groupId>
+            <artifactId>caipiao-core</artifactId>
+        </dependency>
+
+        <!-- 热部署工具 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
