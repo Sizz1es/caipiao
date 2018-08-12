@@ -11,6 +11,7 @@
     <module>caipiao-shiro</module>
     <module>caipiao-core</module>
     <module>caipiao-admin</module>
+    <module>caipiao-wap</module>
   </modules>
 
   <name>caipiao</name>
