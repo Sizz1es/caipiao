@@ -1,12 +1,12 @@
-package com.oneinstep;
+package com.oneinstep.caipiao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootShiroApplication {
+public class SpringBootWapApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootShiroApplication.class, args);
+		SpringApplication.run(SpringBootWapApplication.class, args);
 	}
 }

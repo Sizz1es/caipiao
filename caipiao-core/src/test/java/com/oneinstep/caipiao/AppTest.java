@@ -1,4 +1,4 @@
-package com.oneinstep;
+package com.oneinstep.caipiao;
 
 import org.junit.Test;
 

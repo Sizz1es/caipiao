@@ -1,6 +1,6 @@
-package com.oneinstep.dao;
+package com.oneinstep.caipiao.dao;
 
-import com.oneinstep.entity.UserInfo;
+import com.oneinstep.caipiao.entity.UserInfo;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserInfoDao extends CrudRepository<UserInfo,Long> {

@@ -1,8 +1,8 @@
-package com.oneinstep;
-
-import org.junit.Test;
+package com.oneinstep.caipiao;
 
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
  * Unit test for simple App.

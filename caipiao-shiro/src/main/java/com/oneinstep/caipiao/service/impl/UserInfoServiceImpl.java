@@ -1,8 +1,8 @@
-package com.oneinstep.service.impl;
+package com.oneinstep.caipiao.service.impl;
 
-import com.oneinstep.dao.UserInfoDao;
-import com.oneinstep.entity.UserInfo;
-import com.oneinstep.service.UserInfoService;
+import com.oneinstep.caipiao.dao.UserInfoDao;
+import com.oneinstep.caipiao.entity.UserInfo;
+import com.oneinstep.caipiao.service.UserInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

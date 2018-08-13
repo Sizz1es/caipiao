@@ -1,9 +1,9 @@
-package com.oneinstep.config;
+package com.oneinstep.caipiao.config;
 
-import com.oneinstep.service.UserInfoService;
-import com.oneinstep.entity.SysPermission;
-import com.oneinstep.entity.SysRole;
-import com.oneinstep.entity.UserInfo;
+import com.oneinstep.caipiao.service.UserInfoService;
+import com.oneinstep.caipiao.entity.SysPermission;
+import com.oneinstep.caipiao.entity.SysRole;
+import com.oneinstep.caipiao.entity.UserInfo;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

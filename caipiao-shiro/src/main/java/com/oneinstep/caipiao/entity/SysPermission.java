@@ -1,4 +1,4 @@
-package com.oneinstep.entity;
+package com.oneinstep.caipiao.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

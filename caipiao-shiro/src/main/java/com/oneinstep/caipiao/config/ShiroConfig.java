@@ -1,4 +1,4 @@
-package com.oneinstep.config;
+package com.oneinstep.caipiao.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
