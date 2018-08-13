@@ -1,4 +1,4 @@
-package com.neo.entity;
+package com.oneinstep.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

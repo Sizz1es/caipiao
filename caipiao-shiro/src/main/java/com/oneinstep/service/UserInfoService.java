@@ -1,6 +1,6 @@
-package com.neo.sevice;
+package com.oneinstep.service;
 
-import com.neo.entity.UserInfo;
+import com.oneinstep.entity.UserInfo;
 
 public interface UserInfoService {
     /**通过username查找用户信息;*/

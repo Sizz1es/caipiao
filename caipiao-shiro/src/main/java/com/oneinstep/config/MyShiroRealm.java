@@ -1,9 +1,9 @@
-package com.neo.config;
+package com.oneinstep.config;
 
-import com.neo.entity.SysPermission;
-import com.neo.entity.SysRole;
-import com.neo.entity.UserInfo;
-import com.neo.sevice.UserInfoService;
+import com.oneinstep.service.UserInfoService;
+import com.oneinstep.entity.SysPermission;
+import com.oneinstep.entity.SysRole;
+import com.oneinstep.entity.UserInfo;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

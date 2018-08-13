@@ -1,12 +1,11 @@
-package com.neo.sevice.impl;
+package com.oneinstep.service.impl;
 
-import com.neo.dao.UserInfoDao;
-import com.neo.entity.UserInfo;
-import com.neo.sevice.UserInfoService;
+import com.oneinstep.dao.UserInfoDao;
+import com.oneinstep.entity.UserInfo;
+import com.oneinstep.service.UserInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
     @Resource
