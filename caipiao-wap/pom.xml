@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>caipiao-admin</artifactId>
+    <artifactId>caipiao-wap</artifactId>
 
-    <name>caipiao-admin</name>
+    <name>caipiao-wap</name>
 
     <dependencies>
 

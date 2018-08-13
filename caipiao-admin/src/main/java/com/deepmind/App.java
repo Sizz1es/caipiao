@@ -1,4 +1,4 @@
-package com.oneinstep;
+package com.deepmind;
 
 /**
  * Hello world!
