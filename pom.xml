@@ -22,15 +22,16 @@
     <java.version>1.8</java.version>
     <caipiao.version>1.0-SNAPSHOT</caipiao.version>
     <mysql-connector-java.version>5.1.46</mysql-connector-java.version>
+    <mybatis.version>1.3.2</mybatis.version>
     <druid.version>1.1.10</druid.version>
+    <fastjson.verson>1.2.49</fastjson.verson>
+    <commons-lang3.version>3.7</commons-lang3.version>
     <pagehelper.version>1.2.5</pagehelper.version>
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
     <shiro.version>1.4.0</shiro.version>
     <swagger.version>2.9.2</swagger.version>
     <logback.version>1.3.0-alpha4</logback.version>
     <junit.version>4.12</junit.version>
     <boot.version>2.0.4.RELEASE</boot.version>
-    <log4j.version>1.7.25</log4j.version>
   </properties>
 
   <!-- springboot-starter依赖 -->
@@ -58,7 +59,7 @@
         <artifactId>caipiao-core</artifactId>
         <version>${caipiao.version}</version>
       </dependency>
-
+      
       <!-- Junit Test-->
       <dependency>
         <groupId>junit</groupId>
@@ -73,7 +74,6 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql-connector-java.version}</version>
-          <scope>runtime</scope>
       </dependency>
 
       <!-- HTML解析工具 -->
@@ -90,6 +90,14 @@
         <artifactId>druid-spring-boot-starter</artifactId>
         <version>${druid.version}</version>
       </dependency>
+
+      <!-- fastjson -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.verson}</version>
+      </dependency>
+
 
       <!-- 分页插件pagehelper -->
       <dependency>
@@ -110,19 +118,21 @@
         <artifactId>shiro-spring</artifactId>
         <version>${shiro.version}</version>
       </dependency>
+      <!--
       <dependency>
         <groupId>org.apache.shiro</groupId>
         <artifactId>shiro-web</artifactId>
         <version>${shiro.version}</version>
       </dependency>
-
+      -->
       <!-- shiro对thymeleaf的支持包 -->
+      <!--
       <dependency>
         <groupId>com.github.theborakompanioni</groupId>
         <artifactId>thymeleaf-extras-shiro</artifactId>
         <version>2.0.0</version>
       </dependency>
-
+      -->
 
       <!-- swagger2 -->
       <dependency>
@@ -136,13 +146,19 @@
         <version>${swagger.version}</version>
       </dependency>
 
-      <!-- hibernate所需日志支持包 -->
+      <!-- mybatis -->
       <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>${log4j.version}</version>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.version}</version>
       </dependency>
 
+      <!-- 工具包 -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
 
 
 
@@ -151,7 +167,27 @@
   </dependencyManagement>
 
   <build>
-    <!-- 指定资源目录 -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+          </configuration>
+        </plugin>
+        <!-- 使用SpringBoot进行打包处理的插件 -->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- 指定资源目录-->
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -165,26 +201,37 @@
       </resource>
     </resources>
 
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>${maven-compiler-plugin.version}</version>
-          <configuration>
-            <source>${java.version}</source>
-            <target>${java.version}</target>
-            <encoding>${project.build.sourceEncoding}</encoding>
-          </configuration>
-        </plugin>
-        <!-- 使用SpringBoot进行打包处理的插件 -->
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${boot.version}</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
+
+  <!-- 运行环境 -->
+  <profiles>
+    <profile>
+      <id>local</id>
+      <properties>
+        <spring.active>local</spring.active>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <spring.active>dev</spring.active>
+      </properties>
+    </profile>
+    <profile>
+      <id>test</id>
+      <properties>
+        <spring.active>test</spring.active>
+      </properties>
+    </profile>
+    <profile>
+      <id>produce</id>
+      <properties>
+        <spring.active>produce</spring.active>
+      </properties>
+    </profile>
+  </profiles>
 
 </project>

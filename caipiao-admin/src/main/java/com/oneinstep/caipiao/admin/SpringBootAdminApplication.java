@@ -1,12 +1,13 @@
-package com.oneinstep.caipiao;
+package com.oneinstep.caipiao.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootWapApplication {
+public class SpringBootAdminApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootWapApplication.class, args);
+		SpringApplication.run(SpringBootAdminApplication.class, args);
 	}
+
 }

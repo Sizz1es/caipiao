@@ -22,7 +22,7 @@
             <appender-ref ref="STDOUT"/>
         </root>
 
-        <logger name="com.oneinstep" level="debug" additivity="false">
+        <logger name="com.oneinstep.caipiao.shiro" level="debug" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
 
