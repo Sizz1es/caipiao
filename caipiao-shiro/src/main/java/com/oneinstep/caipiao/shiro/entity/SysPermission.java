@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SysPermission implements Serializable {
 
-    private Integer id;//主键
+    private Integer pid;//主键
     private String name;//名称
     private String resourceType;//资源类型，[menu|button]
     private String url;//资源路径
@@ -17,11 +17,11 @@ public class SysPermission implements Serializable {
     private List<SysRole> roles;
 
     public Integer getId() {
-        return id;
+        return pid;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.pid = id;
     }
 
     public String getName() {

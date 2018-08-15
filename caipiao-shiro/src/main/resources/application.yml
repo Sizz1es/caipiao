@@ -1,23 +1,18 @@
+server:
+  port: 8080
+
 spring:
     datasource:
+      type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
       url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
       username: root
       password: root
-      schema: database/import.sql
-      sql-script-encoding: utf-8
       driver-class-name: com.mysql.jdbc.Driver
-
-    jpa:
-      database: mysql
-      show-sql: true
-      hibernate:
-        ddl-auto: update
-        #naming:
-          #strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
-      properties:
-         hibernate:
-            dialect: org.hibernate.dialect.MySQL5Dialect
-
+      dbcp2:                   #配置连接池的相关参数
+         min-idle: 5           #指定连接池中维C的最小连接数
+         initial-size: 10      #初始化连接数
+         max-total: 100        #最大连接数
+         max-wait-millis: 1000  #最大链接等待时间
     thymeleaf:
        cache: false
        mode: LEGACYHTML5
@@ -25,3 +20,6 @@ spring:
 mybatis:
   type-aliases-package: com.oneinstep.caipiao.shiro.entity
   mapper-locations: classpath:mappers/*.xml
+  configuration:
+    cache-enabled: true
+

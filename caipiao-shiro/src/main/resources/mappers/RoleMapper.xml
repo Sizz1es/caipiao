@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oneinstep.caipiao.shiro.dao.SysRoleDao">
+
+
+	<resultMap id="roleResultMap" type="sysRole">
+		<id column="rid" property="rid"/>
+		<result column="name" property="name"/>
+		<collection property="permissions" ofType="sysPermission" javaType="ArrayList"
+					column="rid"
+					select="com.oneinstep.caipiao.shiro.dao.SysPermissionDao.findPermissionsByRid"/>
+
+	</resultMap>
+
+	<select id="findRolesByUid" resultMap="roleResultMap">
+		select r.rid,r.name from sys_role r
+			inner join sys_user_role ur
+			 on r.rid = ur.rid
+			  where  ur.uid = #{uid}
+	</select>
+</mapper>

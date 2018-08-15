@@ -1,16 +1,16 @@
 package com.oneinstep.caipiao.shiro.dao;
 
 import com.oneinstep.caipiao.core.dao.BaseDao;
-import com.oneinstep.caipiao.shiro.entity.UserInfo;
+import com.oneinstep.caipiao.shiro.entity.User;
 
-public interface UserInfoDao extends BaseDao<Integer,UserInfo> {
+public interface UserDao extends BaseDao<Integer,User> {
 
     /**
      * 通过用户名查询用户
      * @param username 登录用户名
      * @return
      */
-    UserInfo findByUsername(String username);
+    User findForLogin(String username);
 
 
 
