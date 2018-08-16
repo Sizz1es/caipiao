@@ -2,6 +2,7 @@ package com.oneinstep.caipiao.shiro.dao;
 
 import com.oneinstep.caipiao.core.dao.BaseDao;
 import com.oneinstep.caipiao.shiro.entity.SysRole;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

@@ -24,7 +24,7 @@
             <artifactId>caipiao-core</artifactId>
         </dependency>
 
-        <!-- shiro支持 -->
+        <!-- shiro 依赖 -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
@@ -38,11 +38,17 @@
             <artifactId>shiro-web</artifactId>
         </dependency>
 
-        <!-- aop -->
+        <!-- aop 使用shiro注解需要aop支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- thymeleaf-->
@@ -51,22 +57,11 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.theborakompanioni</groupId>
-            <artifactId>thymeleaf-extras-shiro</artifactId>
-        </dependency>
-
         <!-- 热部署工具 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <!-- web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
     </dependencies>

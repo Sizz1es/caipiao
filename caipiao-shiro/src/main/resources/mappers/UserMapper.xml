@@ -20,6 +20,18 @@
 		select  uid,username,name,password,salt,state from user where username = #{username}
 	</select>
 
+	<select id="findAll" resultType="user">
+		select  *  from  user
+	</select>
+
+	<insert id="doCreate">
+		insert  into user(username,password,name,salt,state)
+		values (#{username},#{password},#{name},#{salt},#{state})
+	</insert>
+
+	<update id="doUpdate">
+		update  user set username=#{username},name=#{name},password =#{password},state=#{state} where uid = #{uid}
+	</update>
 
 
 </mapper>

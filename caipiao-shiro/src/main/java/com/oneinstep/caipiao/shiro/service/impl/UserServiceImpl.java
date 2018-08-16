@@ -6,6 +6,7 @@ import com.oneinstep.caipiao.shiro.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -18,4 +19,24 @@ public class UserServiceImpl implements IUserService {
         return userDao.findForLogin(username);
     }
 
+
+    @Override
+    public List<User> list() {
+        return userDao.findAll();
+    }
+
+    @Override
+    public Integer save(User user) {
+        return userDao.doCreate(user);
+    }
+
+    @Override
+    public User findById(Integer uid) {
+        return userDao.findById(uid);
+    }
+
+    @Override
+    public Integer update(User user) {
+        return userDao.doUpdate(user);
+    }
 }
