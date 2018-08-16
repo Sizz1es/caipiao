@@ -7,5 +7,10 @@ import java.util.List;
 
 public interface SysRoleDao extends BaseDao<Integer,SysRole> {
 
+    /**
+     * 通过用户id查询对应角色集合
+     * @param uid 用户id
+     * @return
+     */
     List<SysRole> findRolesByUid(Integer uid);
 }

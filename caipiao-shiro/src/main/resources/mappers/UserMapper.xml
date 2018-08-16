@@ -7,15 +7,17 @@
 		<id column="uid" property="uid"/>
 		<result column="username" property="username"/>
 		<result column="name" property="name"/>
+		<result column="password" property="password"/>
+		<result column="salt" property="salt"/>
 		<result column="state" property="state"/>
-		<collection property="roles" ofType="sysRole" column="uid" javaType="ArrayList"
-		select="com.oneinstep.caipiao.shiro.dao.SysRoleDao.findRolesByUid">
+		<collection property="roles" ofType="sysRole" column="uid"
+					select="com.oneinstep.caipiao.shiro.dao.SysRoleDao.findRolesByUid">
 		</collection>
 	</resultMap>
 
 	<!-- 根据用户名查询角色权限信息 -->
 	<select id="findForLogin" resultMap="userAuthResultMap">
-		select  uid,username,name,password,state from user where username = #{username}
+		select  uid,username,name,password,salt,state from user where username = #{username}
 	</select>
 
 

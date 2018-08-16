@@ -6,17 +6,19 @@
 
 	<resultMap id="roleResultMap" type="sysRole">
 		<id column="rid" property="rid"/>
-		<result column="name" property="name"/>
-		<collection property="permissions" ofType="sysPermission" javaType="ArrayList"
-					column="rid"
+		<result column="role" property="role"/>
+		<result column="description" property="description"/>
+		<result column="available" property="available"/>
+		<collection property="permissions" ofType="sysPermission" column="rid"
 					select="com.oneinstep.caipiao.shiro.dao.SysPermissionDao.findPermissionsByRid"/>
-
 	</resultMap>
 
 	<select id="findRolesByUid" resultMap="roleResultMap">
-		select r.rid,r.name from sys_role r
-			inner join sys_user_role ur
-			 on r.rid = ur.rid
-			  where  ur.uid = #{uid}
+		select r.rid,r.role,r.description,r.available
+		from sys_role r
+		inner join sys_user_role ur
+		on r.rid = ur.rid
+		where  ur.uid = #{uid}
 	</select>
+
 </mapper>

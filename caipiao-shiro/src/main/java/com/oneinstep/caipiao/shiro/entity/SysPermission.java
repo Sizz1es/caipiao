@@ -1,20 +1,19 @@
 package com.oneinstep.caipiao.shiro.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 
 public class SysPermission implements Serializable {
 
     private Integer pid;//主键
-    private String name;//名称
+    private String description;//名称
     private String resourceType;//资源类型，[menu|button]
     private String url;//资源路径
     private String permission; //权限字符串,menu例子：role:*，button例子：role:create,role:update,role:delete,role:view
     private Long parentId; //父编号
     private String parentIds; //父编号列表
     private Boolean available = Boolean.FALSE;
-    private List<SysRole> roles;
+
 
     public Integer getId() {
         return pid;
@@ -24,12 +23,12 @@ public class SysPermission implements Serializable {
         this.pid = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getResourceType() {
@@ -80,11 +79,18 @@ public class SysPermission implements Serializable {
         this.available = available;
     }
 
-    public List<SysRole> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(List<SysRole> roles) {
-        this.roles = roles;
+    @Override
+    public String toString() {
+        return "SysPermission{" +
+                "pid=" + pid +
+                ", description='" + description + '\'' +
+                ", resourceType='" + resourceType + '\'' +
+                ", url='" + url + '\'' +
+                ", permission='" + permission + '\'' +
+                ", parentId=" + parentId +
+                ", parentIds='" + parentIds + '\'' +
+                ", available=" + available +
+                '}';
     }
 }

@@ -29,9 +29,9 @@
     <pagehelper.version>1.2.5</pagehelper.version>
     <shiro.version>1.4.0</shiro.version>
     <swagger.version>2.9.2</swagger.version>
-    <logback.version>1.3.0-alpha4</logback.version>
     <junit.version>4.12</junit.version>
     <boot.version>2.0.4.RELEASE</boot.version>
+    <log4j.version>2.11.1</log4j.version>
   </properties>
 
   <!-- springboot-starter依赖 -->
@@ -160,6 +160,12 @@
         <version>${commons-lang3.version}</version>
       </dependency>
 
+      <!-- log4j -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+      </dependency>
 
 
 

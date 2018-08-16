@@ -13,11 +13,11 @@ public class User implements Serializable {
 
     private List<SysRole> roles;// 一个用户具有多个角色
 
-    public Integer getId() {
+    public Integer getUidd() {
         return uid;
     }
 
-    public void setId(Integer uid) {
+    public void setUid(Integer uid) {
         this.uid = uid;
     }
 
@@ -77,4 +77,18 @@ public class User implements Serializable {
         return this.username+this.salt;
     }
     //重新对盐重新进行了定义，用户名+salt，这样就更加不容易被破解
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", state=" + state +
+                ", roles=" + roles +
+                '}';
+    }
 }
