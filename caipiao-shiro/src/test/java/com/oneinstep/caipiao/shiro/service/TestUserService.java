@@ -19,6 +19,6 @@ public class TestUserService {
     @Test
     public void testfindForLogin(){
         User user = userService.findForLogin("admin");
-        System.out.println(user.getCredentialsSalt());
+        System.out.println(user);
     }
 }

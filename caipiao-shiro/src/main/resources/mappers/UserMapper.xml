@@ -33,5 +33,13 @@
 		update  user set username=#{username},name=#{name},password =#{password},state=#{state} where uid = #{uid}
 	</update>
 
+	<delete id="doRemove">
+		delete  from  user where  uid = #{uid}
+	</delete>
+
+	<select id="findById" resultType="user">
+		select  * from  user where  uid = #{uid}
+	</select>
+
 
 </mapper>

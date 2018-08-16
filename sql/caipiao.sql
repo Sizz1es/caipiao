@@ -37,8 +37,8 @@ CREATE TABLE `sys_user_role` (
   `uid` int(11) NOT NULL,
   KEY `fk_ur_uid_idx` (`uid`),
   KEY `fk_ur_rid_idx` (`rid`),
-  CONSTRAINT `fk_ur_rid` FOREIGN KEY (`rid`) REFERENCES `sys_role` (`rid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ur_uid` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ur_rid` FOREIGN KEY (`rid`) REFERENCES `sys_role` (`rid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ur_uid` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `sys_role_permission`;
@@ -47,8 +47,8 @@ CREATE TABLE `sys_role_permission` (
   `rid` int(11) NOT NULL,
   KEY `fk_rp_rid_idx` (`rid`),
   KEY `fk_rp_pid_idx` (`pid`),
-  CONSTRAINT `fk_rp_pid` FOREIGN KEY (`pid`) REFERENCES `sys_permission` (`pid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rp_rid` FOREIGN KEY (`rid`) REFERENCES `sys_role` (`rid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_rp_pid` FOREIGN KEY (`pid`) REFERENCES `sys_permission` (`pid`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rp_rid` FOREIGN KEY (`rid`) REFERENCES `sys_role` (`rid`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

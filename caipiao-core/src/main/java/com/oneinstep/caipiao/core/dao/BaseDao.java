@@ -18,28 +18,36 @@ public interface BaseDao<K,V> {
      * @return 受影响的数据条数
      * @throws Exception
      */
-    public Integer doCreate(V v);
+     Integer doCreate(V v);
     /**
      * 根据id更新数据
      * @param v 包含了要修改的数据的的信息的vo对象
      * @return 受影响的数据条数
      * @throws Exception
      */
-    public Integer doUpdate(V v);
+     Integer doUpdate(V v);
+
+    /**
+     * 根据id删除对象
+     * @param k
+     * @return
+     */
+     Integer doRemove(K k);
+
 
     /**
      * 查询所有
      * @return 包含了所有查询到的数据的vo对象的集合
      * @throws Exception
      */
-    public List<V> findAll();
+     List<V> findAll();
 
     /**
      * 查询所有数据量
      * @return 所有的数据的条数
      * @throws Exception
      */
-    public Integer getAllCount();
+     Integer getAllCount();
 
     /**
      * 根据编号进行批量删除
@@ -47,7 +55,7 @@ public interface BaseDao<K,V> {
      * @return 受影响的数据条数
      * @throws Exception
      */
-    public Integer doRemoveBatch(List<K> ids);
+     Integer doRemoveBatch(List<K> ids);
 
     /**
      * 分页查询
@@ -56,7 +64,7 @@ public interface BaseDao<K,V> {
      * @return 分页数据
      * @throws Exception
      */
-    public List<V> findAllSplit(Integer start, Integer ls);
+     List<V> findAllSplit(Integer start, Integer ls);
 
     /**
      * 通过ID进行查询
@@ -64,7 +72,7 @@ public interface BaseDao<K,V> {
      * @return 实体
      * @throws Exception
      */
-    public V findById(K k);
+     V findById(K k);
 
     /**
      * 通过UID进行查询
@@ -72,6 +80,6 @@ public interface BaseDao<K,V> {
      * @return 实体
      * @throws Exception
      */
-    public V findByUid(String uid);
+     V findByUid(String uid);
 
 }

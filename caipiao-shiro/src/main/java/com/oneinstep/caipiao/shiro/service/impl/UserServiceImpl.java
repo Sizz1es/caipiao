@@ -39,4 +39,9 @@ public class UserServiceImpl implements IUserService {
     public Integer update(User user) {
         return userDao.doUpdate(user);
     }
+
+    @Override
+    public Integer delete(Integer uid) {
+        return userDao.doRemove(uid);
+    }
 }

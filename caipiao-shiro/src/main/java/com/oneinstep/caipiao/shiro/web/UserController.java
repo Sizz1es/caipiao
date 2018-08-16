@@ -6,6 +6,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -72,17 +73,17 @@ public class UserController {
     @RequestMapping("/edit")
     public String edit(User user) {
         userService.update(user);
-        return "redirect:/list";
+        return "redirect:/user/list";
     }
 
     /**
      * 用户删除;
      * @return
      */
-    @RequestMapping("/del")
+    @RequestMapping("/delete")
     @RequiresPermissions("user:del")
     public String delete(Integer uid){
         userService.delete(uid);
-        return "userInfoDel";
+        return "redirect:/user/list";
     }
 }
