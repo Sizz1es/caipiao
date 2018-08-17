@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Field;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBootShiroApplication.class)
@@ -21,4 +22,5 @@ public class TestUserService {
         User user = userService.findForLogin("admin");
         System.out.println(user);
     }
+
 }

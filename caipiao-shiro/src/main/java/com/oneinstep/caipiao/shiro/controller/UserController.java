@@ -1,7 +1,9 @@
-package com.oneinstep.caipiao.shiro.web;
+package com.oneinstep.caipiao.shiro.controller;
 
+import com.oneinstep.caipiao.core.controller.BaseController;
 import com.oneinstep.caipiao.shiro.entity.User;
 import com.oneinstep.caipiao.shiro.service.IUserService;
+import com.sun.net.httpserver.Authenticator;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Resource
     IUserService userService;
@@ -35,6 +37,10 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * 跳转到用户添加页面
+     * @return
+     */
     @RequestMapping("/toAdd")
     @RequiresPermissions("user:add")
     public String toAdd() {
@@ -42,14 +48,14 @@ public class UserController {
     }
 
     /**
-     * 用户添加;
+     * 添加用户
      * @return
      */
     @RequestMapping("/add")
     @RequiresPermissions("user:add")
     public String add(User user){
         userService.save(user);
-        return "userInfoAdd";
+        return "redirect:/user/list";
     }
 
     /**
@@ -66,7 +72,7 @@ public class UserController {
     }
 
     /**
-     * 编辑用户信息
+     * 修改用户其他信息
      * @param user
      * @return
      */
@@ -76,8 +82,15 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    public String updatePass(String userName,String oldPass,String newPass){
+        String result = "";
+        User user = userService.findByNameAndPass(userName,oldPass);
+
+        return  result;
+    }
+
     /**
-     * 用户删除;
+     * 删除用户
      * @return
      */
     @RequestMapping("/delete")
@@ -86,4 +99,5 @@ public class UserController {
         userService.delete(uid);
         return "redirect:/user/list";
     }
+
 }

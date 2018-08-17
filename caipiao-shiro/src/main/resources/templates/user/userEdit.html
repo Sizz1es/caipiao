@@ -15,13 +15,7 @@
         <div class="form-group">
             <label for="username" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="username"  id="username" th:value="*{username}" placeholder="用户名"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-2 control-label" >密码</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" id="password"  th:value="*{password}" placeholder="密码"/>
+                <input type="text" class="form-control" name="username"  id="username" th:value="*{username}" placeholder="用户名" disabled />
             </div>
         </div>
         <div class="form-group">
@@ -33,7 +27,7 @@
         <div class="form-group">
             <label for="state" class="col-sm-2 control-label">状态</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="state"  id="state" th:value="*{state}" placeholder="状态"/>
+                <input type="text" class="form-control" name="state"  id="state" th:value="*{state}" placeholder="状态" disabled />
             </div>
         </div>
         <div class="form-group">

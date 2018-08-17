@@ -30,7 +30,7 @@
 	</insert>
 
 	<update id="doUpdate">
-		update  user set username=#{username},name=#{name},password =#{password},state=#{state} where uid = #{uid}
+		update  user set name=#{name} where uid = #{uid}
 	</update>
 
 	<delete id="doRemove">
@@ -40,6 +40,14 @@
 	<select id="findById" resultType="user">
 		select  * from  user where  uid = #{uid}
 	</select>
+
+	<select id="findByNameAndPass" resultType="user">
+		select  * from  user  where  username=#{username} and  password = #{password}
+	</select>
+
+	<update id="updatePass">
+		update user set password = #{password} where  username = #{userName}
+	</update>
 
 
 </mapper>

@@ -6,6 +6,7 @@ import com.oneinstep.caipiao.shiro.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @Service
@@ -44,4 +45,16 @@ public class UserServiceImpl implements IUserService {
     public Integer delete(Integer uid) {
         return userDao.doRemove(uid);
     }
+
+    @Override
+    public User findByNameAndPass(String userName, String password) {
+        return userDao.findByNameAndPass(userName,password);
+    }
+
+    @Override
+    public boolean updatePass(String userName, String newPass) {
+        return userDao.updatePass(userName,newPass)>0;
+    }
+
+
 }

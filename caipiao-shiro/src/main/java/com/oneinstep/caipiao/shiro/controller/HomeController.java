@@ -1,4 +1,4 @@
-package com.oneinstep.caipiao.shiro.web;
+package com.oneinstep.caipiao.shiro.controller;
 
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
