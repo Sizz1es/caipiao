@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author henry.shaw(xiaoyao)
+ * 控制器的父类，封装了一些公用方法及格式转换
+ */
 public class BaseController {
 
     public static final  String SUCCESS = "SUCCESS";

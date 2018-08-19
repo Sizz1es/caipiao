@@ -2,6 +2,12 @@ package com.oneinstep.caipiao.core.base.service;
 
 import java.util.List;
 
+/**
+ * 业务层父接口
+ * @author henry.shaw(xiaoyao)
+ * @param <K>
+ * @param <V>
+ */
 public interface BaseService<K,V> {
 
     /**
