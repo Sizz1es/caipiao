@@ -1,9 +1,7 @@
 package com.oneinstep.caipiao.shiro.dao;
 
-import com.oneinstep.caipiao.core.dao.BaseDao;
+import com.oneinstep.caipiao.core.base.dao.BaseDao;
 import com.oneinstep.caipiao.shiro.entity.User;
-
-import javax.jws.soap.SOAPBinding;
 
 public interface UserDao extends BaseDao<Integer,User> {
 
@@ -15,19 +13,12 @@ public interface UserDao extends BaseDao<Integer,User> {
     User findForLogin(String username);
 
     /**
-     * 通过用户名和密码查询用户
-     * @param userName
-     * @param password
+     * 根据用户id更新用户密码
+     * @param uid 用户Id
+     * @param newPass 新密码
      * @return
      */
-    User findByNameAndPass(String userName,String password);
+    Integer updatePassByUid(Integer uid,String newPass);
 
-    /**
-     * 通过用户名修改密码
-     * @param userName
-     * @param newPass
-     * @return
-     */
-    Integer updatePass(String userName,String newPass);
 
 }

@@ -1,4 +1,4 @@
-package com.oneinstep.caipiao.core.controller;
+package com.oneinstep.caipiao.core.base.controller;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,7 +18,10 @@ public class BaseController {
     public static String FORWARD = "forward:";
 
 
-
+    /**
+     * 转换日期格式
+     * @param binder
+     */
     @InitBinder
     public void formatDate(WebDataBinder binder){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

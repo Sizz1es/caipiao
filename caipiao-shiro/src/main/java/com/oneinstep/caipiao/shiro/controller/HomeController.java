@@ -3,16 +3,20 @@ package com.oneinstep.caipiao.shiro.controller;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
 public class HomeController {
+
     @RequestMapping({"/","/index"})
-    public String index(){
-        return"/index";
+    public String index(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name){
+        model.addAttribute("name", name);
+        return"/hello";
     }
 
     @RequestMapping("/login")

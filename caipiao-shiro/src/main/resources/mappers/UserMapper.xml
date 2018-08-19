@@ -45,8 +45,8 @@
 		select  * from  user  where  username=#{username} and  password = #{password}
 	</select>
 
-	<update id="updatePass">
-		update user set password = #{password} where  username = #{userName}
+	<update id="updatePassByUid">
+		update user set password = #{newPass} where  uid = #{uid}
 	</update>
 
 

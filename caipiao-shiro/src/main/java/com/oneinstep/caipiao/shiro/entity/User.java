@@ -74,7 +74,7 @@ public class User implements Serializable {
      * @return
      */
     public String getCredentialsSalt(){
-       return this.username+this.salt;
+        return this.username + this.salt;
    }
 
     //重新对盐重新进行了定义，用户名+salt，这样就更加不容易被破解

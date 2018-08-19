@@ -99,7 +99,7 @@
       </dependency>
 
 
-      <!-- 分页插件pagehelper -->
+      <!--  mybatis的分页插件 pagehelper -->
       <dependency>
         <groupId>com.github.pagehelper</groupId>
         <artifactId>pagehelper-spring-boot-starter</artifactId>

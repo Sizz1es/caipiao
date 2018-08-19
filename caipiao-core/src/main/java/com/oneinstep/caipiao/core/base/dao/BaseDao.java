@@ -1,6 +1,4 @@
-package com.oneinstep.caipiao.core.dao;
-
-import org.apache.ibatis.session.SqlSessionException;
+package com.oneinstep.caipiao.core.base.dao;
 
 import java.util.List;
 

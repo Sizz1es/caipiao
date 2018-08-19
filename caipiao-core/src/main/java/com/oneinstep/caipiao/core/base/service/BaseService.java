@@ -1,7 +1,4 @@
-package com.oneinstep.caipiao.core.service;
-
-import org.apache.ibatis.session.SqlSessionException;
-import org.hibernate.validator.internal.engine.messageinterpolation.InterpolationTerm;
+package com.oneinstep.caipiao.core.base.service;
 
 import java.util.List;
 

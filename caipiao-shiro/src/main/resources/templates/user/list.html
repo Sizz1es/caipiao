@@ -15,7 +15,6 @@
         <tr>
             <th>用户编号</th>
             <th>用户名</th>
-            <th>密码</th>
             <th>真实姓名</th>
             <th>状态</th>
             <th>编辑</th>
@@ -23,10 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr  th:each="user : ${users}">
+        <tr  th:each="user : ${pager.list}">
             <th scope="row" th:text="${user.uid}"/>
             <td th:text="${user.username}"/>
-            <td th:text="${user.password}"/>
             <td th:text="${user.name}"/>
             <td th:text="${user.state}"/>
             <td><a th:href="@{/user/toEdit(uid=${user.uid})}">编辑</a></td>
@@ -34,6 +32,35 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- 分页导航栏 pager.prePage跳到上一页，pager.nextPage跳到下一页 -->
+    <div>
+        <div class="clearfix">
+            <ul class="pagination m-b-5 pull-right">
+                <li th:if="${pager.hasPreviousPage}"><a
+                        th:href="@{'/user/list?pn='+${pager.prePage}}"
+                        aria-label="Previous"> <i class="fa fa-angle-left"></i>&nbsp;上一页
+                </a></li>
+
+                <th:block th:each="nav : ${pager.navigatepageNums}">
+                    <li th:class="${nav == pager.pageNum}?'active':''"><a
+                            th:href="@{'/user/list?pn='+${nav}}"
+                            th:text="${nav}"></a></li>
+                </th:block>
+
+                <th:block th:if="${pager.hasNextPage}">
+                    <li><a
+                            th:href="@{'/user/list?pn='+${pager.nextPage}}"
+                            aria-label="Next"> 下一页&nbsp;<i class="fa fa-angle-right"></i>
+                    </a></li>
+                </th:block>
+
+                <li><span th:text="'共'+${pager.pages}+'页'"></span></li>
+            </ul>
+        </div>
+    </div>
+
+
 </div>
 <div class="form-group">
     <div class="col-sm-2 control-label">

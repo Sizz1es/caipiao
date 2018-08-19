@@ -47,13 +47,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findByNameAndPass(String userName, String password) {
-        return userDao.findByNameAndPass(userName,password);
-    }
-
-    @Override
-    public boolean updatePass(String userName, String newPass) {
-        return userDao.updatePass(userName,newPass)>0;
+    public boolean updatePass(Integer uid, String newPass) {
+        return userDao.updatePassByUid(uid,newPass)>0;
     }
 
 
