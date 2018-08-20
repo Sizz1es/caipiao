@@ -15,10 +15,10 @@ public interface UserDao extends BaseDao<Integer,User> {
     /**
      * 根据用户id更新用户密码
      * @param uid 用户Id
-     * @param newPass 新密码
+     * @param password 新密码
      * @return
      */
-    Integer updatePassByUid(Integer uid,String newPass);
+    Integer setPass(Integer uid,String password);
 
 
 }

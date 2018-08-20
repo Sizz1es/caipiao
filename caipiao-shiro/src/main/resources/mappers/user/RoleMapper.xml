@@ -21,4 +21,5 @@
 		where  ur.uid = #{uid}
 	</select>
 
+
 </mapper>

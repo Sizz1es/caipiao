@@ -1,25 +1,219 @@
 server:
-  port: 8080
+  port: 80 #端口
 
-spring:
-    datasource:
-      type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
-      url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
-      dbcp2:                   #配置连接池的相关参数
-         min-idle: 5           #指定连接池中维C的最小连接数
-         initial-size: 10      #初始化连接数
-         max-total: 100        #最大连接数
-         max-wait-millis: 1000  #最大链接等待时间
-    thymeleaf:
-       cache: false
-       mode: LEGACYHTML5
-
+#mybatis配置
 mybatis:
   type-aliases-package: com.oneinstep.caipiao.shiro.entity
-  mapper-locations: classpath:mappers/*.xml
+  mapper-locations: classpath:mappers/*/*.xml
   configuration:
     cache-enabled: true
 
+#日志路径
+log:
+  path: my-logs
+
+#spring通用配置
+spring:
+  profiles:
+    active: @spring.active@
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: static/**,templates/**
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+
+########################################### 本地开发环境######################################################
+---
+spring:
+    profiles: local
+    datasource:
+      #type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
+      url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+      username: root
+      password: root
+      #driver-class-name: com.mysql.jdbc.Driver
+      #配置druid连接池相关参数
+      druid:
+        initial-size: 100  #初始化连接数
+        min-idle: 20  #最小空闲连接数
+        max-active: 200  #最大连接数
+        transaction-query-timeout: 6000 #事务查询超时时间
+        remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+        query-timeout: 6000   #查询超时时间
+        max-wait: 60000  #获取连接等待超时的时间
+        validation-query: SELECT 'X'
+        time-between-log-stats-millis: 60000   #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        filters: stat,config
+        ######Druid 过滤配置######
+        #是否启用StatFilter默认值true
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          #exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+          session-stat-enable: false
+          session-stat-max-count: 1000
+          principal-session-name: druid
+          principal-cookie-name: druid
+          profile-enable: true
+        ######Druid 监控配置######
+        stat-view-servlet:
+          enabled: true #是否开启监控
+          url-pattern: /druid/*
+          reset-stat-enable: true  #允许清空统计数据
+          login-username: druid
+          login-password: druid
+        #aop-patterns: *.service.*  # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+    #thymeleaf配置
+    thymeleaf:
+       cache: false #是否开启缓存
+       mode: LEGACYHTML5
+
+########################################### 开发环境######################################################
+---
+
+spring:
+    profiles: dev
+    datasource:
+      #type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
+      url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+      username: root
+      password: root
+      #driver-class-name: com.mysql.jdbc.Driver
+      #配置druid连接池相关参数
+      druid:
+        initial-size: 100  #初始化连接数
+        min-idle: 20  #最小空闲连接数
+        max-active: 200  #最大连接数
+        transaction-query-timeout: 6000 #事务查询超时时间
+        remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+        query-timeout: 6000   #查询超时时间
+        max-wait: 60000  #获取连接等待超时的时间
+        validation-query: SELECT 'X'
+        time-between-log-stats-millis: 60000   #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        filters: stat,config
+        ######Druid 过滤配置######
+        #是否启用StatFilter默认值true
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          #exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+          session-stat-enable: false
+          session-stat-max-count: 1000
+          principal-session-name: druid
+          principal-cookie-name: druid
+          profile-enable: true
+        ######Druid 监控配置######
+        stat-view-servlet:
+          enabled: true #是否开启监控
+          url-pattern: /druid/*
+          reset-stat-enable: true  #允许清空统计数据
+          login-username: druid
+          login-password: druid
+        #aop-patterns: *.service.*  # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+    #thymeleaf配置
+    thymeleaf:
+       cache: false #是否开启缓存
+       mode: LEGACYHTML5
+
+########################################### 测试环境######################################################
+---
+spring:
+    profiles: test
+    datasource:
+      #type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
+      url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+      username: root
+      password: root
+      #driver-class-name: com.mysql.jdbc.Driver
+      #配置druid连接池相关参数
+      druid:
+        initial-size: 100  #初始化连接数
+        min-idle: 20  #最小空闲连接数
+        max-active: 200  #最大连接数
+        transaction-query-timeout: 6000 #事务查询超时时间
+        remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+        query-timeout: 6000   #查询超时时间
+        max-wait: 60000  #获取连接等待超时的时间
+        validation-query: SELECT 'X'
+        time-between-log-stats-millis: 60000   #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        filters: stat,config
+        ######Druid 过滤配置######
+        #是否启用StatFilter默认值true
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          #exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+          session-stat-enable: false
+          session-stat-max-count: 1000
+          principal-session-name: druid
+          principal-cookie-name: druid
+          profile-enable: true
+        ######Druid 监控配置######
+        stat-view-servlet:
+          enabled: true #是否开启监控
+          url-pattern: /druid/*
+          reset-stat-enable: true  #允许清空统计数据
+          login-username: druid
+          login-password: druid
+        #aop-patterns: *.service.*  # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+    #thymeleaf配置
+    thymeleaf:
+       cache: false #是否开启缓存
+       mode: LEGACYHTML5
+
+
+
+########################################### 生产环境######################################################
+---
+spring:
+    profiles: produce
+    datasource:
+      #type: com.alibaba.druid.pool.DruidDataSource  #指定连接池的类型--druid
+      url: jdbc:mysql://localhost:3306/caipiao?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+      username: root
+      password: root
+      #driver-class-name: com.mysql.jdbc.Driver
+      #配置druid连接池相关参数
+      druid:
+        initial-size: 100  #初始化连接数
+        min-idle: 20  #最小空闲连接数
+        max-active: 200  #最大连接数
+        transaction-query-timeout: 6000 #事务查询超时时间
+        remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
+        query-timeout: 6000   #查询超时时间
+        max-wait: 60000  #获取连接等待超时的时间
+        validation-query: SELECT 'X'
+        time-between-log-stats-millis: 60000   #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        min-evictable-idle-time-millis: 300000
+        filters: stat,config
+        ######Druid 过滤配置######
+        #是否启用StatFilter默认值true
+        web-stat-filter:
+          enabled: true
+          url-pattern: /*
+          #exclusions: *.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+          session-stat-enable: false
+          session-stat-max-count: 1000
+          principal-session-name: druid
+          principal-cookie-name: druid
+          profile-enable: true
+        ######Druid 监控配置######
+        stat-view-servlet:
+          enabled: true #是否开启监控
+          url-pattern: /druid/*
+          reset-stat-enable: true  #允许清空统计数据
+          login-username: druid
+          login-password: druid
+        #aop-patterns: *.service.*  # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
+    #thymeleaf配置
+    thymeleaf:
+       cache: false #是否开启缓存
+       mode: LEGACYHTML5

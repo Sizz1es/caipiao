@@ -1,25 +1,24 @@
-package com.oneinstep.caipiao.shiro.service;
+package com.oneinstep.caipiao.shiro.controller;
 
 import com.oneinstep.caipiao.shiro.DockerShiroApplication;
-import com.oneinstep.caipiao.shiro.entity.User;
-import org.junit.Test;
+import com.oneinstep.caipiao.shiro.service.IUserService;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DockerShiroApplication.class)
-public class TestUserService {
+public class TestUserController {
 
     @Resource
-    private IUserService userService;
+    RestTemplate restTemplate;
 
-    @Test
-    public void testFindForLogin(){
-        User user = userService.findForLogin("admin");
-        System.out.println(user);
+    public  void testUserController(){
+
     }
 
 }

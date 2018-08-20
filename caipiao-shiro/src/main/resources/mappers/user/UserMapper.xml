@@ -3,6 +3,7 @@
 
 <mapper namespace="com.oneinstep.caipiao.shiro.dao.UserDao">
 
+	<!-- 包含用户角色和权限信息的ResultMap -->
 	<resultMap id="userAuthResultMap" type="user">
 		<id column="uid" property="uid"/>
 		<result column="username" property="username"/>
@@ -24,30 +25,42 @@
 		select  *  from  user
 	</select>
 
+	<!-- 新增用户，插入数据-->
 	<insert id="doCreate">
 		insert  into user(username,password,name,salt,state)
 		values (#{username},#{password},#{name},#{salt},#{state})
 	</insert>
 
+	<!-- 修改用户 -->
 	<update id="doUpdate">
-		update  user set name=#{name} where uid = #{uid}
+		update  user set
+		name=#{name} where uid = #{uid}
 	</update>
 
+	<!-- 设置用户状态 -->
+	<update id="setStatus">
+		update user set status = #{status} where uid = #{uid}
+	</update>
+
+	<!-- 根据id删除 -->
 	<delete id="doRemove">
-		delete  from  user where  uid = #{uid}
+		delete  from user where  uid = #{uid}
 	</delete>
 
+	<!-- 根据id 查找 -->
 	<select id="findById" resultType="user">
 		select  * from  user where  uid = #{uid}
 	</select>
 
-	<select id="findByNameAndPass" resultType="user">
-		select  * from  user  where  username=#{username} and  password = #{password}
-	</select>
-
-	<update id="updatePassByUid">
-		update user set password = #{newPass} where  uid = #{uid}
+	<!-- 修改密码 -->
+	<update id="setPass">
+		update user set password = #{password} where  uid = #{uid}
 	</update>
 
+	<!-- 设置角色 -->
+	<update id="setRoles">
+		update user set rid = #{roleIds} where id =
+		#{userId}
+	</update>
 
 </mapper>

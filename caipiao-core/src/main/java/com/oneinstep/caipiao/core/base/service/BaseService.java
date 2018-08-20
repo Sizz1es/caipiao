@@ -21,7 +21,7 @@ public interface BaseService<K,V> {
      * @param v
      * @return
      */
-    Integer save(V v);
+    boolean save(V v);
 
     /**
      * 根据id查找内容
@@ -35,12 +35,12 @@ public interface BaseService<K,V> {
      * @param v
      * @return
      */
-    Integer update(V v);
+    boolean update(V v);
 
     /**
      * 根据id删除对象
      * @param k
      * @return
      */
-    Integer delete(K k);
+    boolean delete(K k);
 }

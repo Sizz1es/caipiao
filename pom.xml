@@ -32,6 +32,7 @@
     <junit.version>4.12</junit.version>
     <boot.version>2.0.4.RELEASE</boot.version>
     <log4j.version>2.11.1</log4j.version>
+    <thymeleaf-shiro.version>2.0.0</thymeleaf-shiro.version>
   </properties>
 
   <!-- springboot-starter依赖 -->
@@ -77,6 +78,7 @@
       </dependency>
 
       <!-- HTML解析工具 -->
+      <!-- 暂未用到 -->
       <!--
       <dependency>
         <groupId>net.sourceforge.nekohtml</groupId>
@@ -84,13 +86,15 @@
         <version>1.9.22</version>
       </dependency>
       -->
-      <!-- druid连接池 -->
+
+      <!-- springboot集成druid连接池 -->
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>druid-spring-boot-starter</artifactId>
         <version>${druid.version}</version>
       </dependency>
 
+      <!-- 暂未用到 -->
       <!-- fastjson -->
       <dependency>
         <groupId>com.alibaba</groupId>
@@ -125,6 +129,7 @@
       </dependency>
 
       <!-- swagger2 -->
+      <!-- 暂未用到 -->
       <dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger2</artifactId>
@@ -156,6 +161,15 @@
         <artifactId>log4j-api</artifactId>
         <version>${log4j.version}</version>
       </dependency>
+
+      <!-- thymeleaf 和 shiro 的标签整合-->
+      <!-- 暂未用到 -->
+      <dependency>
+        <groupId>com.github.theborakompanioni</groupId>
+        <artifactId>thymeleaf-extras-shiro</artifactId>
+        <version>${thymeleaf-shiro.version}</version>
+      </dependency>
+
 
 
 

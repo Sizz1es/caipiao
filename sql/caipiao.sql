@@ -54,6 +54,14 @@ CREATE TABLE `sys_role_permission` (
 
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES (1,'admin','7f034c75e3cc0e7bd00b5a3344c5af5a','d3c59d25033dbf980d29554025c23a75','管理员',0);
+INSERT INTO user(username,name,state) VALUES ('test1','测试1',0);
+INSERT INTO user(username,name,state) VALUES ('test2','测试2',0);
+INSERT INTO user(username,name,state) VALUES ('test3','测试3',0);
+INSERT INTO user(username,name,state) VALUES ('test4','测试4',0);
+INSERT INTO user(username,name,state) VALUES ('test5','测试5',0);
+INSERT INTO user(username,name,state) VALUES ('test6','测试6',0);
+INSERT INTO user(username,name,state) VALUES ('test7','测试7',0);
+INSERT INTO user(username,name,state) VALUES ('test8','测试8',0);
 UNLOCK TABLES;
 
 

@@ -8,8 +8,7 @@ import com.oneinstep.caipiao.shiro.entity.User;
 public interface IUserService extends BaseService<Integer,User> {
 
     /**通过username查找用户信息;*/
-    public User findForLogin(String userName);
-
+    User findForLogin(String userName);
 
     /**
      * 修改账号密码

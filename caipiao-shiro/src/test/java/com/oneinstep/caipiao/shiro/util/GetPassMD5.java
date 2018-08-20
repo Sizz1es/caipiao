@@ -8,7 +8,7 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 public class GetPassMD5 {
 
     public static void main(String[] args) {
-        SimpleHash sh = new SimpleHash("MD5","123456","admind3c59d25033dbf980d29554025c23a75",1024);
+        SimpleHash sh = new SimpleHash("MD5","123456","admin1o4e8et7z684r5rixi4odule1emq8el04",1024);
         System.out.println(sh.toString());
     }
 }

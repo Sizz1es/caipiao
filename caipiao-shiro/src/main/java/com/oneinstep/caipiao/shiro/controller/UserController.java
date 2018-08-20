@@ -7,6 +7,7 @@ import com.oneinstep.caipiao.core.base.controller.BaseController;
 import com.oneinstep.caipiao.core.base.tips.SuccessTip;
 import com.oneinstep.caipiao.core.exception.MyException;
 import com.oneinstep.caipiao.core.exception.MyExceptionEnum;
+import com.oneinstep.caipiao.core.util.ToolUtil;
 import com.oneinstep.caipiao.shiro.entity.User;
 import com.oneinstep.caipiao.shiro.service.IUserService;
 import com.oneinstep.caipiao.shiro.util.ShiroKit;
@@ -14,10 +15,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 @Controller
@@ -29,8 +30,14 @@ public class UserController extends BaseController {
      */
     private static String PREFIX = "/user/";
 
+    /**
+     * 重定向到用户列表
+     */
     private  static String USERLIST = REDIRECT + PREFIX + "list";
 
+    /**
+     * 操作成功提示信息
+     */
     protected static SuccessTip SUCCESS_TIP = new SuccessTip();
 
     @Resource
@@ -45,7 +52,7 @@ public class UserController extends BaseController {
      * 用户分页列表显示
      * @return
      */
-    @RequestMapping("/list")
+    @GetMapping("/list")
     @RequiresPermissions("user:view")
     public String list(@RequestParam(value="pn",defaultValue="1")Integer pn,@RequestParam(value="ls",defaultValue="3")Integer ls,Model model){
         //pn-->当前页码，默认为1
@@ -61,7 +68,7 @@ public class UserController extends BaseController {
      * 跳转到用户添加页面
      * @return
      */
-    @RequestMapping("/toAdd")
+    @GetMapping("/toAdd")
     @RequiresPermissions("user:add")
     public String toAdd() {
         return PREFIX + "userAdd";
@@ -71,9 +78,14 @@ public class UserController extends BaseController {
      * 添加用户
      * @return
      */
-    @RequestMapping("/add")
+    @PostMapping("/add")
     @RequiresPermissions("user:add")
     public String add(User user){
+        String salt = ToolUtil.getRandomString(32);
+        String credentialsSalt = user.getUsername() + salt;
+        String password = ShiroKit.getMd5Pass(user.getPassword(),credentialsSalt);
+        user.setSalt(salt);
+        user.setPassword(password);
         userService.save(user);
         return USERLIST;
     }
@@ -84,9 +96,10 @@ public class UserController extends BaseController {
      * @param uid
      * @return
      */
-    @RequestMapping("/toEdit")
+    @GetMapping("/toEdit")
+    @RequiresPermissions("user:edit")
     public String toEdit(Model model,Integer uid) {
-        User user=userService.findById(uid);
+        User user = userService.findById(uid);
         model.addAttribute("user", user);
         return PREFIX + "userEdit";
     }
@@ -96,7 +109,8 @@ public class UserController extends BaseController {
      * @param user
      * @return
      */
-    @RequestMapping("/edit")
+    @PostMapping("/edit")
+    @RequiresPermissions("user:edit")
     public String edit(User user) {
         userService.update(user);
         return USERLIST;
@@ -105,9 +119,9 @@ public class UserController extends BaseController {
     /**
      * 跳转到修改密码界面
      */
-    @RequestMapping("/user_chpwd")
+    @GetMapping("/toChPwd")
     public String chPwd() {
-        return PREFIX + "user_chpwd";
+        return PREFIX + "chpwd";
     }
 
     /**
@@ -117,6 +131,7 @@ public class UserController extends BaseController {
      * @param rePass 重复密码
      * @return
      */
+    @PostMapping("/chPwd")
     public Object updatePass(String oldPass,String newPass,String rePass){
         if(!rePass.equals(newPass)){
             throw new MyException(MyExceptionEnum.TWO_PWD_NOT_MATCH);
@@ -137,9 +152,9 @@ public class UserController extends BaseController {
      * 删除用户
      * @return
      */
-    @RequestMapping("/delete")
+    @DeleteMapping("/delete/{uid}")
     @RequiresPermissions("user:del")
-    public String delete(Integer uid){
+    public String delete(@PathVariable("uid") Integer uid){
         userService.delete(uid);
         return USERLIST;
     }

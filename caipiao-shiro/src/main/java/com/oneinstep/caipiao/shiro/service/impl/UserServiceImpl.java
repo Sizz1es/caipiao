@@ -27,8 +27,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Integer save(User user) {
-        return userDao.doCreate(user);
+    public boolean save(User user) {
+        return userDao.doCreate(user)>0;
     }
 
     @Override
@@ -37,18 +37,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Integer update(User user) {
-        return userDao.doUpdate(user);
+    public boolean update(User user) {
+        return userDao.doUpdate(user)>0;
     }
 
     @Override
-    public Integer delete(Integer uid) {
-        return userDao.doRemove(uid);
+    public boolean delete(Integer uid) {
+        return userDao.doRemove(uid)>0;
     }
 
     @Override
     public boolean updatePass(Integer uid, String newPass) {
-        return userDao.updatePassByUid(uid,newPass)>0;
+        return userDao.setPass(uid,newPass)>0;
     }
 
 

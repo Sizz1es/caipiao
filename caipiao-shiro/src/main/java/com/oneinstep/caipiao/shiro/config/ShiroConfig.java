@@ -23,6 +23,8 @@ public class ShiroConfig {
 		//拦截器.
 		Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
 		// 配置不会被拦截的链接 顺序判断
+		//放开druid监控拦截
+		filterChainDefinitionMap.put("/druid/**","anon");
 		filterChainDefinitionMap.put("/static/**", "anon");
 		//配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
 		filterChainDefinitionMap.put("/logout", "logout");

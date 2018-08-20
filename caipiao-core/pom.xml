@@ -50,16 +50,10 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- druid -->
+        <!-- springboot集成druid连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- fastjson-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
         </dependency>
 
         <!-- 工具包 -->
@@ -97,6 +91,7 @@
         </dependency>
 
         <!--  缓存 -->
+        <!-- 暂未用到 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
