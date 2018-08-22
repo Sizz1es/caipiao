@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @author henry.shaw(xiaoyao)
- * 控制器的父类，封装了一些公用方法及格式转换
+ * 控制器的父类，封装了一些公用方法及格式转换1
  */
 public class BaseController {
 
