@@ -23,7 +23,7 @@
 
     <dependencies>
 
-        <!-- 引入本项目核心依赖 -->
+        <!-- 引入本项目核心模块 -->
         <dependency>
             <groupId>com.oneinstep</groupId>
             <artifactId>caipiao-core</artifactId>
@@ -60,7 +60,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <!-- web -->
@@ -82,10 +81,12 @@
         </dependency>
 
         <!-- thymeleaf 和 shiro 的标签整合-->
+        <!--
         <dependency>
             <groupId>com.github.theborakompanioni</groupId>
             <artifactId>thymeleaf-extras-shiro</artifactId>
         </dependency>
+        -->
 
         <!--  mybatis的分页插件 pagehelper -->
         <dependency>

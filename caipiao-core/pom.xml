@@ -92,11 +92,13 @@
 
         <!--  缓存 -->
         <!-- 暂未用到 -->
+        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
             <scope>provided</scope>
         </dependency>
+        -->
         <!-- springboot end-->
 
     </dependencies>

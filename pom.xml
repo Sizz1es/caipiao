@@ -31,7 +31,6 @@
     <swagger.version>2.9.2</swagger.version>
     <junit.version>4.12</junit.version>
     <boot.version>2.0.4.RELEASE</boot.version>
-    <log4j.version>2.11.1</log4j.version>
     <thymeleaf-shiro.version>2.0.0</thymeleaf-shiro.version>
   </properties>
 
@@ -130,7 +129,6 @@
       </dependency>
 
       <!-- swagger2 -->
-      <!-- 暂未用到 -->
       <dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger2</artifactId>
@@ -158,14 +156,13 @@
 
       <!-- thymeleaf 和 shiro 的标签整合-->
       <!-- 暂未用到 -->
+      <!--
       <dependency>
         <groupId>com.github.theborakompanioni</groupId>
         <artifactId>thymeleaf-extras-shiro</artifactId>
         <version>${thymeleaf-shiro.version}</version>
       </dependency>
-
-
-
+      -->
 
     </dependencies>
   </dependencyManagement>

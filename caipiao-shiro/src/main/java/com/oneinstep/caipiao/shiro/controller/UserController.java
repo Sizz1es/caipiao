@@ -32,7 +32,7 @@ public class UserController extends BaseController {
     /**
      * 重定向到用户列表
      */
-    private  static String USERLIST = REDIRECT + PREFIX + "list";
+    private  static String USER_LIST = REDIRECT + PREFIX + "list";
 
     /**
      * 操作成功提示信息
@@ -91,7 +91,7 @@ public class UserController extends BaseController {
         user.setSalt(salt);
         user.setPassword(password);
         userService.save(user);
-        return USERLIST;
+        return USER_LIST;
     }
 
     /**
@@ -118,7 +118,7 @@ public class UserController extends BaseController {
     @RequiresPermissions("user:edit")
     public String edit(@RequestBody @ApiParam(name = "用户对象",value = "传入json格式",required = true) User user) {
         userService.update(user);
-        return USERLIST;
+        return USER_LIST;
     }
 
     /**
@@ -172,7 +172,7 @@ public class UserController extends BaseController {
     @RequiresPermissions("user:del")
     public String delete(@PathVariable("uid") Integer uid){
         userService.delete(uid);
-        return USERLIST;
+        return USER_LIST;
     }
 
 }
