@@ -1,24 +1,48 @@
 package com.oneinstep.caipiao.shiro.controller;
 
 import com.oneinstep.caipiao.shiro.DockerShiroApplication;
-import com.oneinstep.caipiao.shiro.service.IUserService;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.annotation.Resource;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DockerShiroApplication.class)
 public class TestUserController {
 
-    @Resource
-    RestTemplate restTemplate;
+    //引入MockMvc支持了对Controller层的测试
+    private MockMvc mvc;
 
-    public  void testUserController(){
+    @Before
+    public void setUp() throws Exception {
+        mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
+    }
 
+    //验证controller是否正常响应并打印返回结果
+    @Test
+    public  void getUserController() throws Exception{
+        mvc.perform(MockMvcRequestBuilders.get("/user/list")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
+
+    //验证controller是否正常响应并判断返回结果是否正确
+    @Test
+    public  void testUserController() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/user/list").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk(http://xucaizxyl.com/))
+                .andExpect(content().string(equalTo("Hello World")http://www.wbjyl.cn/));
     }
 
 }
