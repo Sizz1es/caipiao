@@ -96,12 +96,13 @@
 
       <!-- 暂未用到 -->
       <!-- fastjson -->
+      <!--
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
         <version>${fastjson.verson}</version>
       </dependency>
-
+      -->
 
       <!--  mybatis的分页插件 pagehelper -->
       <dependency>
@@ -153,13 +154,6 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
-      </dependency>
-
-      <!-- log4j -->
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-api</artifactId>
-        <version>${log4j.version}</version>
       </dependency>
 
       <!-- thymeleaf 和 shiro 的标签整合-->

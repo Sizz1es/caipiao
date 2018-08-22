@@ -11,14 +11,13 @@ import com.oneinstep.caipiao.core.util.ToolUtil;
 import com.oneinstep.caipiao.shiro.entity.User;
 import com.oneinstep.caipiao.shiro.service.IUserService;
 import com.oneinstep.caipiao.shiro.util.ShiroKit;
-import org.apache.shiro.SecurityUtils;
+import io.swagger.annotations.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Parameter;
 import java.util.List;
 
 @Controller
@@ -52,6 +51,11 @@ public class UserController extends BaseController {
      * 用户分页列表显示
      * @return
      */
+    @ApiOperation(value = "用户列表显示",notes = "分页显示用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pn",value = "当前页数",paramType = "query",required = true,dataType = "Integer",defaultValue = "1"),
+            @ApiImplicitParam(name = "ls",value = "每页显示数据条数",paramType = "query",required = true,dataType = "Integer",defaultValue = "3")
+    })
     @GetMapping("/list")
     @RequiresPermissions("user:view")
     public String list(@RequestParam(value="pn",defaultValue="1")Integer pn,@RequestParam(value="ls",defaultValue="3")Integer ls,Model model){
@@ -109,9 +113,10 @@ public class UserController extends BaseController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "修改用户信息",notes="用户名和uid不可修改")
     @PostMapping("/edit")
     @RequiresPermissions("user:edit")
-    public String edit(User user) {
+    public String edit(@RequestBody @ApiParam(name = "用户对象",value = "传入json格式",required = true) User user) {
         userService.update(user);
         return USERLIST;
     }
@@ -131,6 +136,12 @@ public class UserController extends BaseController {
      * @param rePass 重复密码
      * @return
      */
+    @ApiOperation(value = "修改当前用户密码",notes = "修改当前用户密码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="oldPass",value = "旧密码",paramType = "query",required = true,dataType = "String"),
+            @ApiImplicitParam(name="newPass",value = "新密码",paramType = "query",required = true,dataType = "String"),
+            @ApiImplicitParam(name="rePass",value = "重复密码",paramType = "query",required = true,dataType = "String")
+    })
     @PostMapping("/chPwd")
     public Object updatePass(String oldPass,String newPass,String rePass){
         if(!rePass.equals(newPass)){
@@ -141,8 +152,11 @@ public class UserController extends BaseController {
         String oldMd5 = ShiroKit.getMd5Pass(oldPass,user.getCredentialsSalt());//原密码加密后
         if(oldMd5.equals(user.getPassword())){
             String newMd5 = ShiroKit.getMd5Pass(newPass,user.getCredentialsSalt());//新密码加密后
-            userService.updatePass(uid,newMd5);
-            return  SUCCESS_TIP;
+            if(userService.updatePass(uid,newMd5)){
+                return  SUCCESS_TIP;
+            }else {
+                return ERROR;
+            }
         }else {
             throw  new MyException(MyExceptionEnum.OLD_PWD_NOT_RIGHT);
         }
@@ -152,6 +166,8 @@ public class UserController extends BaseController {
      * 删除用户
      * @return
      */
+    @ApiOperation(value = "删除指定用户",notes = "根据id删除单个用户")
+    @ApiImplicitParam(name = "uid",value = "用户id",required = true,paramType = "query",dataType = "Integer")
     @DeleteMapping("/delete/{uid}")
     @RequiresPermissions("user:del")
     public String delete(@PathVariable("uid") Integer uid){

@@ -52,11 +52,6 @@
 		select  * from  user where  uid = #{uid}
 	</select>
 
-	<!-- 修改密码 -->
-	<update id="setPass">
-		update user set password = #{password} where  uid = #{uid}
-	</update>
-
 	<!-- 设置角色 -->
 	<update id="setRoles">
 		update user set rid = #{roleIds} where id =

@@ -71,7 +71,11 @@ UNLOCK TABLES;
 
 
 LOCK TABLES `sys_permission` WRITE;
-INSERT INTO `sys_permission` VALUES (1,0,'用户管理',0,'0/','user:view','menu','user/list'),(2,0,'用户添加',1,'0/1','user:add','button','user/add'),(3,0,'用户删除',1,'0/1','user:del','button','user/del');
+INSERT INTO `sys_permission` VALUES
+(1,0,'用户管理',0,'0/','user:view','menu','user/list'),
+(2,0,'用户添加',1,'0/1','user:add','button','user/add'),
+(3,0,'用户删除',1,'0/1','user:del','button','user/del');
+(4,0,'用户编辑',1,'0/1','user:edit','button','user/edit');
 UNLOCK TABLES;
 
 
@@ -81,7 +85,7 @@ UNLOCK TABLES;
 
 
 LOCK TABLES `sys_role_permission` WRITE;
-INSERT INTO `sys_role_permission` VALUES (1,1),(2,1),(3,2);
+INSERT INTO `sys_role_permission` VALUES (1,1),(2,1),(3,1),(4,1),(3,2);
 UNLOCK TABLES;
 
 

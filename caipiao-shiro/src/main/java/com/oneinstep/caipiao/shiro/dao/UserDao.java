@@ -2,6 +2,8 @@ package com.oneinstep.caipiao.shiro.dao;
 
 import com.oneinstep.caipiao.core.base.dao.BaseDao;
 import com.oneinstep.caipiao.shiro.entity.User;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 public interface UserDao extends BaseDao<Integer,User> {
 
@@ -15,10 +17,10 @@ public interface UserDao extends BaseDao<Integer,User> {
     /**
      * 根据用户id更新用户密码
      * @param uid 用户Id
-     * @param password 新密码
+     * @param newPass 新密码
      * @return
      */
-    Integer setPass(Integer uid,String password);
-
+    @Update("update user set password = #{newPass} where  uid = #{uid}")
+    int setPass(Integer uid,String newPass);
 
 }

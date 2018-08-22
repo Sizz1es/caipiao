@@ -8,6 +8,9 @@ mybatis:
   configuration:
     cache-enabled: true
 
+caipiao:
+  swagger-open: true  #开启swagger2，访问路径:localhost/swagger-ui.html
+
 #日志路径
 log:
   path: my-logs
@@ -210,8 +213,8 @@ spring:
           enabled: true #是否开启监控
           url-pattern: /druid/*
           reset-stat-enable: true  #允许清空统计数据
-          login-username: druid
-          login-password: druid
+          login-username: druid  #监控后台用户名
+          login-password: druid  #监控后台密码
         #aop-patterns: *.service.*  # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
     #thymeleaf配置
     thymeleaf:
